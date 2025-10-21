@@ -126,6 +126,21 @@ if [ $# -eq 1 ]; then
     create_dir "$dir"
     create_hpp "$dir/$ns"
     create_cpp "$dir/$ns"
+
+    main_dir="src/main"
+    main_base="${main_dir}/main"
+    if [ -f "${main_base}.hpp" ] && [ -f "${main_base}.cpp" ]; then
+        add_include_to_header "${main_base}.hpp" "../$ns/$ns"
+    else
+        create_dir "$main_dir"
+        if [ ! -f "${main_base}.hpp" ]; then
+            create_hpp "${main_base}"
+        fi
+        if [ ! -f "${main_base}.cpp" ]; then
+            create_cpp "${main_base}"
+        fi
+        add_include_to_header "${main_base}.hpp" "../$ns/$ns"
+    fi
 elif [ $# -eq 2 ]; then
     ns="$1"
     cls="$2"
