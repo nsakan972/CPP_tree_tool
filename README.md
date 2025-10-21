@@ -63,3 +63,6 @@ chmod +x CPP_stablo_sr.sh
 ./CPP_stablo_sr.sh fizika talasi
 ```
 
+## License
+
+This repository is licensed under the BSD 2-Clause (FreeBSD) License. See the `LICENSE` file for details.
